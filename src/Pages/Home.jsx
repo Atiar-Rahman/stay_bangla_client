@@ -1,15 +1,28 @@
-import React from 'react';
-import Navbar from '../components/navbar/Navbar';
-import HeroCarusol from '../components/home/HeroCarusol';
-import SwiperSlider from '../components/home/SwiperSlider';
+import SwiperSlider from "../components/home/SwiperSlider";
+import SectionTitle from "../components/SectionTitle";
+import Services from "../components/home/Services";
+import BlogNews from "../components/home/BlogNews";
 
 const Home = () => {
-    return (
-        <div>
-            <SwiperSlider></SwiperSlider>
-            this is home page
-        </div>
-    );
+  return (
+    <div>
+      <SwiperSlider />
+      <SectionTitle
+        heading={"Our Best Hotel"}
+        subHeading={"Explore our Top label Hotel in Bangladesh"}
+      />
+      <SectionTitle
+        heading={"Our Best Services"}
+        subHeading={"Explore hotel services and Enjoy at all"}
+      />
+      <Services />
+      <SectionTitle
+        heading={"Blog and News"}
+        subHeading={"Explore all news knowledge our Hotel"}
+      />
+      <BlogNews />
+    </div>
+  );
 };
 
 export default Home;
