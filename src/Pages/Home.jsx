@@ -2,6 +2,7 @@ import SwiperSlider from "../components/home/SwiperSlider";
 import SectionTitle from "../components/SectionTitle";
 import Services from "../components/home/Services";
 import BlogNews from "../components/home/BlogNews";
+import FAQSection from "../components/home/FAQSection";
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
         subHeading={"Explore all news knowledge our Hotel"}
       />
       <BlogNews />
+      <FAQSection/>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const RightNavbar = () => {
     return (
@@ -61,7 +62,7 @@ const RightNavbar = () => {
               </a>
             </li>
             <li>
-              <a>Settings</a>
+              <NavLink to='/dashboard'>Dashboard</NavLink>
             </li>
             <li>
               <a>Logout</a>

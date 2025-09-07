@@ -3,6 +3,11 @@ import Home from "../Pages/Home";
 import MainLayout from "../layout/MainLayout";
 import Contact from "../Pages/Contact";
 import BlogDetails from "../components/home/BlogDetails";
+import Dashboard from "../Pages/Dashboard";
+import DashboardLayout from "../layout/DashboardLayout";
+import AddHotel from "../Pages/AddHotel";
+import AddRoom from "../Pages/AddRoom";
+import AddRoomImage from "../Pages/AddHotelImage";
 
 const AppRoutes = () => {
   return (
@@ -11,6 +16,12 @@ const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
+      </Route>
+      <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="addhotel" element={<AddHotel />} />
+        <Route path="addroom" element={<AddRoom />} />
+        <Route path="addimages" element={<AddRoomImage />} />
       </Route>
     </Routes>
   );
