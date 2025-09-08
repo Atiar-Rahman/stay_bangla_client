@@ -8,6 +8,8 @@ import DashboardLayout from "../layout/DashboardLayout";
 import AddHotel from "../Pages/AddHotel";
 import AddRoom from "../Pages/AddRoom";
 import AddRoomImage from "../Pages/AddHotelImage";
+import Hotels from "../Pages/Hotels";
+import HotelDetails from "../Pages/HotelDetails";
 
 const AppRoutes = () => {
   return (
@@ -22,6 +24,8 @@ const AppRoutes = () => {
         <Route path="addhotel" element={<AddHotel />} />
         <Route path="addroom" element={<AddRoom />} />
         <Route path="addimages" element={<AddRoomImage />} />
+        <Route path="showhotel" element={<Hotels />} />
+        <Route path="hotel/:hotelId" element={<HotelDetails />} />
       </Route>
     </Routes>
   );
