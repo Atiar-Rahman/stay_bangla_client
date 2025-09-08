@@ -5,11 +5,15 @@ import {
   FaUser,
   FaBed,
   FaMoneyBillWave,
+  FaEdit,
 } from "react-icons/fa";
+import { FaArrowRight, FaTrash } from "react-icons/fa6";
+import { Link, useParams } from "react-router-dom";
 
 const Room = ({ room }) => {
+    const {hotelId} = useParams()
   return (
-    <div className="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+    <div className=" bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
       {/* Room type */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-xl font-bold capitalize text-gray-800">
@@ -48,9 +52,23 @@ const Room = ({ room }) => {
       </div>
 
       {/* Book button */}
-      <button className="w-full bg-blue-600 text-white py-2 rounded-xl font-medium hover:bg-blue-700 transition-colors">
-        Book Now
-      </button>
+      <div className="flex space-x-2">
+        <Link to={`/dashboard/hotel/${hotelId}/rooms/${room.id}/bookings/`}>
+          <button className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
+            booking <FaArrowRight />
+          </button>
+        </Link>
+        <Link>
+          <button className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
+            Update <FaEdit />
+          </button>
+        </Link>
+        <Link>
+          <button className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
+            Delete <FaTrash />
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

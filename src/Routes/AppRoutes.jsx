@@ -10,6 +10,7 @@ import AddRoom from "../Pages/AddRoom";
 import AddRoomImage from "../Pages/AddHotelImage";
 import Hotels from "../Pages/Hotels";
 import HotelDetails from "../Pages/HotelDetails";
+import RoomBooking from "../Pages/RoomBooking";
 
 const AppRoutes = () => {
   return (
@@ -26,6 +27,7 @@ const AppRoutes = () => {
         <Route path="addimages" element={<AddRoomImage />} />
         <Route path="showhotel" element={<Hotels />} />
         <Route path="hotel/:hotelId" element={<HotelDetails />} />
+        <Route path="hotel/:hotelId/rooms/:roomId/bookings/" element={<RoomBooking/>}/>
       </Route>
     </Routes>
   );
