@@ -2,8 +2,19 @@ import Lottie from "lottie-react";
 import loginAnimation from "../data/Login.json";
 import { SiWelcometothejungle } from "react-icons/si";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import useAuthContext from "../hook/useAuthContext";
+
 
 const SignIn = () => {
+
+    const {register,handleSubmit,formState:{errors}} = useForm()
+    const { loginUser } = useAuthContext();
+
+    const handleLogin = (data) =>{
+        console.log(data)
+        loginUser(data);
+    }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 via-white to-blue-100 px-4">
       <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center gap-10 shadow-xl rounded-3xl overflow-hidden bg-white">
@@ -25,7 +36,7 @@ const SignIn = () => {
             Please sign in to continue to your account
           </p>
 
-          <form className="space-y-5">
+          <form onSubmit={handleSubmit(handleLogin)} className="space-y-5">
             {/* Email */}
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">
@@ -33,21 +44,37 @@ const SignIn = () => {
               </label>
               <input
                 type="email"
+                {...register("email", { required: "Email field is required" })}
                 placeholder="you@example.com"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
               />
+              {errors.email && (
+                <span className="text-red-500 text-sm">
+                  {errors.email.message}
+                </span>
+              )}
             </div>
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">
-                Password
-              </label>
-              <input
-                type="password"
-                placeholder="••••••••"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              />
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  placeholder="••••••••"
+                  {...register("password", {
+                    required: "Password is required",
+                  })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                />
+                {errors.password && (
+                  <span className="text-red-500 text-sm">
+                    {errors.password.message}
+                  </span>
+                )}
+              </div>
               <div className="flex justify-end mt-1">
                 <a
                   href="#"

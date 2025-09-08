@@ -1,14 +1,17 @@
 import { createContext } from "react";
 import useAuth from "../hook/useAuth";
 
-const AuthContext = createContext();
+// Create context
+// eslint-disable-next-line react-refresh/only-export-components
+export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-    const allContext = useAuth() //get data from useAuth hook then pass provider value
+// Provider
+const AuthProvider = ({ children }) => {
+  const allContext = useAuth(); // contains { loginUser, user, logoutUser, etc. }
 
   return (
     <AuthContext.Provider value={allContext}>{children}</AuthContext.Provider>
   );
 };
 
-export default AuthContext;
+export default AuthProvider;
