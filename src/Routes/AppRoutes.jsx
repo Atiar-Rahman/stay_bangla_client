@@ -11,6 +11,8 @@ import AddRoomImage from "../Pages/AddHotelImage";
 import Hotels from "../Pages/Hotels";
 import HotelDetails from "../Pages/HotelDetails";
 import RoomBooking from "../Pages/RoomBooking";
+import SignIn from "../Pages/SignIn";
+import SignUp from "../Pages/SignUp";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +21,8 @@ const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
       </Route>
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route index element={<Dashboard />} />
@@ -27,7 +31,10 @@ const AppRoutes = () => {
         <Route path="addimages" element={<AddRoomImage />} />
         <Route path="showhotel" element={<Hotels />} />
         <Route path="hotel/:hotelId" element={<HotelDetails />} />
-        <Route path="hotel/:hotelId/rooms/:roomId/bookings/" element={<RoomBooking/>}/>
+        <Route
+          path="hotel/:hotelId/rooms/:roomId/bookings/"
+          element={<RoomBooking />}
+        />
       </Route>
     </Routes>
   );
