@@ -4,6 +4,7 @@ import { SiWelcometothejungle } from "react-icons/si";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuthContext from "../hook/useAuthContext";
+import Swal from "sweetalert2";
 
 
 const SignIn = () => {
@@ -12,8 +13,16 @@ const SignIn = () => {
     const { loginUser } = useAuthContext();
 
     const handleLogin = (data) =>{
-        console.log(data)
+        // console.log(data)
         loginUser(data);
+        // login after alert show
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
     }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 via-white to-blue-100 px-4">

@@ -11,19 +11,22 @@ const useAuth = () => {
   const [authTokens, setAuthTokens] = useState(getToken());
 
   useEffect(() => {
-    fetchUserProfile();
+    if (authTokens) fetchUserProfile();
   }, [authTokens]);
 
-//   handle api error
-  const handleApiError = (error,defaultMessage="something went worng try again")=>{
+  //   handle api error
+  const handleApiError = (
+    error,
+    defaultMessage = "something went worng try again"
+  ) => {
     if (error.response && error.response.data) {
-        // field error show
-        const errorMessage = Object.values(error.response.data).flat().join("\n");
-        setErrorMes(errorMessage);
-      } else {
-        setErrorMes("Registration faild.try again",defaultMessage);
-      }
-  }
+      // field error show
+      const errorMessage = Object.values(error.response.data).flat().join("\n");
+      setErrorMes(errorMessage);
+    } else {
+      setErrorMes("Registration faild.try again", defaultMessage);
+    }
+  };
 
   // fetch user profile
   const fetchUserProfile = async () => {
@@ -53,12 +56,12 @@ const useAuth = () => {
   // password change
   const changePassword = async (data) => {
     try {
-     await apiClient.post("/auth/users/set_password/", data, {
+      await apiClient.post("/auth/users/set_password/", data, {
         headers: { Authorization: `JWT ${authTokens?.access}` },
       });
     } catch (err) {
       console.log(err);
-      return handleApiError(err,"some this went worng")
+      return handleApiError(err, "some this went worng");
     }
   };
 
@@ -77,18 +80,21 @@ const useAuth = () => {
       console.log("Login err", error.data?.response);
     }
   };
-  //  Registration user
+  // Registration user
   const registeruser = async (userData) => {
     try {
-      await apiClient.post("/auth/users/", userData);
+      const response = await apiClient.post("/auth/users/", userData);
       return {
         success: true,
         message:
-          "Registration successful. check your email to activate your accounting Redirecting...",
+          "Registration successful. Check your email to activate your account. Redirecting...",
+        data: response.data, // optional: server response
       };
     } catch (err) {
-      console.log("register err", err);
-      return handleApiError(err,"registration faild try again")
+      console.log("Registration error:", err.response?.data || err.message);
+
+      // handleApiError is your custom function; fallback message if API doesn't provide details
+      return handleApiError(err, "Registration failed, please try again.");
     }
   };
 
