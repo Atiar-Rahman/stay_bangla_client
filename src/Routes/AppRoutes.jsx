@@ -13,6 +13,7 @@ import HotelDetails from "../Pages/HotelDetails";
 import RoomBooking from "../Pages/RoomBooking";
 import SignIn from "../Pages/SignIn";
 import SignUp from "../Pages/SignUp";
+import Profile from "../Pages/Profile";
 
 const AppRoutes = () => {
   return (
@@ -35,6 +36,7 @@ const AppRoutes = () => {
           path="hotel/:hotelId/rooms/:roomId/bookings/"
           element={<RoomBooking />}
         />
+        <Route path="profile" element={<Profile/>}/>
       </Route>
     </Routes>
   );
