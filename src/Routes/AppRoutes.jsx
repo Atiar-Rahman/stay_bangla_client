@@ -17,6 +17,7 @@ import Profile from "../Pages/Profile";
 import ShowBooking from "../Pages/ShowBooking";
 import ShowUser from "../Pages/ShowUser";
 import ShowReview from "../Pages/ShowReview";
+import PrivateRoute from "./PrivateRoute";
 
 const AppRoutes = () => {
   return (
@@ -28,7 +29,7 @@ const AppRoutes = () => {
         <Route path="/login" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
       </Route>
-      <Route path="/dashboard" element={<DashboardLayout />}>
+      <Route path="/dashboard" element={<PrivateRoute><DashboardLayout/></PrivateRoute>}>
         <Route index element={<Dashboard />} />
         <Route path="addhotel" element={<AddHotel />} />
         <Route path="addroom/:hotelId" element={<AddRoom />} />
