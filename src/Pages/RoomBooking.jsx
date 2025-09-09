@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import apiClient from "../services/api-client";
 import authApiClient from "../services/auth-api-client";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const RoomBooking = () => {
   const { hotelId, roomId } = useParams();
-
+  const nevigate = useNavigate()
   // Initialize react-hook-form
   const {
     register,
@@ -50,11 +51,24 @@ const RoomBooking = () => {
         `/hotels/${hotelId}/rooms/${roomId}/bookings/`,
         data
       );
-      console.log("Booking successful:", res.data);
-      alert("Booking confirmed!");
+      // console.log("Booking successful:", res.data);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: `Your work has been saved${res.data}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      nevigate('/dashboard/showbooking')
     } catch (err) {
       console.error("Booking failed:", err.response?.data || err.message);
-      alert("Booking failed!");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 
