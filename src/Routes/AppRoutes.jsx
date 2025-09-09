@@ -31,7 +31,7 @@ const AppRoutes = () => {
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route index element={<Dashboard />} />
         <Route path="addhotel" element={<AddHotel />} />
-        <Route path="addroom" element={<AddRoom />} />
+        <Route path="addroom/:hotelId" element={<AddRoom />} />
         <Route path="addimages" element={<AddRoomImage />} />
         <Route path="showhotel" element={<Hotels />} />
         <Route path="hotel/:hotelId" element={<HotelDetails />} />

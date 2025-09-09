@@ -6,7 +6,6 @@ const Sidebar = ({ open, handleOpen }) => {
   const AdminMenu = [
     { to: "/dashboard", icon: MdDashboard, label: "Dashboard" },
     { to: "/dashboard/addhotel", icon: MdDashboard, label: "Add Hotel" },
-    { to: "/dashboard/addroom", icon: MdDashboard, label: "Add Hotel Room" },
     { to: "/dashboard/addimages", icon: MdDashboard, label: "Add Hotel Image" },
     { to: "/dashboard/showhotel", icon: MdDashboard, label: "Show Hotel" },
     { to: "/dashboard/reviews", icon: MdDashboard, label: "Show Review" },
