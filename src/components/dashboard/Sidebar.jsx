@@ -9,9 +9,9 @@ const Sidebar = ({ open, handleOpen }) => {
     { to: "/dashboard/addroom", icon: MdDashboard, label: "Add Hotel Room" },
     { to: "/dashboard/addimages", icon: MdDashboard, label: "Add Hotel Image" },
     { to: "/dashboard/showhotel", icon: MdDashboard, label: "Show Hotel" },
-    { to: "/dashboard", icon: MdDashboard, label: "Show Review" },
-    { to: "/dashboard", icon: MdDashboard, label: "User" },
-    { to: "/dashboard", icon: MdDashboard, label: "Show Booking" },
+    { to: "/dashboard/reviews", icon: MdDashboard, label: "Show Review" },
+    { to: "/dashboard/users", icon: MdDashboard, label: "User" },
+    { to: "/dashboard/showbooking", icon: MdDashboard, label: "Show Booking" },
   ];
 
   const MenuItems = AdminMenu

@@ -1,28 +1,62 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import apiClient from "../services/api-client";
+import authApiClient from "../services/auth-api-client";
+import { useForm } from "react-hook-form";
 
 const RoomBooking = () => {
   const { hotelId, roomId } = useParams();
-  const [roomType, setRoomType] = useState("");
 
+  // Initialize react-hook-form
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      room_type: "",
+      check_in: "",
+      check_out: "",
+      num_guests: 1,
+      num_rooms: 1,
+    },
+  });
+
+  // Fetch room data and set form values
   useEffect(() => {
-    // Fetch hotel data by ID
-    apiClient
-      .get(`/hotels/${hotelId}/`)
-      .then((res) => {
+    const fetchRoom = async () => {
+      try {
+        const res = await apiClient.get(`/hotels/${hotelId}/`);
         const hotel = res.data;
         const room = hotel.rooms.find((r) => String(r.id) === String(roomId));
         if (room) {
-          setRoomType(room.room_type);
+          setValue("room_type", room.room_type); // prefill room_type
         } else {
           console.warn("Room not found in this hotel.");
         }
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error("Error fetching hotel data:", err);
-      });
-  }, [hotelId, roomId]);
+      }
+    };
+    fetchRoom();
+  }, [hotelId, roomId, setValue]);
+
+  // Handle form submission
+  const handleBooking = async (data) => {
+    console.log("Submitted booking data:", data);
+    try {
+      const res = await authApiClient.post(
+        `/hotels/${hotelId}/rooms/${roomId}/bookings/`,
+        data
+      );
+      console.log("Booking successful:", res.data);
+      alert("Booking confirmed!");
+    } catch (err) {
+      console.error("Booking failed:", err.response?.data || err.message);
+      alert("Booking failed!");
+    }
+  };
 
   return (
     <div className="flex items-center justify-center bg-gray-100 p-6">
@@ -30,7 +64,7 @@ const RoomBooking = () => {
         <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">
           Room Booking Form
         </h1>
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit(handleBooking)} className="space-y-4">
           {/* Room Type */}
           <div>
             <label
@@ -42,8 +76,7 @@ const RoomBooking = () => {
             <input
               type="text"
               id="roomType"
-              name="roomType"
-              value={roomType}
+              {...register("room_type")}
               readOnly
               className="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md shadow-sm px-3 py-2"
             />
@@ -59,10 +92,15 @@ const RoomBooking = () => {
             </label>
             <input
               type="date"
+              {...register("check_in", {
+                required: "Check-in date is required",
+              })}
               id="checkin"
-              name="checkin"
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
             />
+            {errors.check_in && (
+              <p className="text-red-500 text-sm">{errors.check_in.message}</p>
+            )}
           </div>
 
           {/* Check-out */}
@@ -75,10 +113,15 @@ const RoomBooking = () => {
             </label>
             <input
               type="date"
+              {...register("check_out", {
+                required: "Check-out date is required",
+              })}
               id="checkout"
-              name="checkout"
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
             />
+            {errors.check_out && (
+              <p className="text-red-500 text-sm">{errors.check_out.message}</p>
+            )}
           </div>
 
           {/* Number of Guests */}
@@ -91,8 +134,8 @@ const RoomBooking = () => {
             </label>
             <input
               type="number"
+              {...register("num_guests", { required: true, min: 1 })}
               id="guests"
-              name="guests"
               min="1"
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
             />
@@ -108,8 +151,8 @@ const RoomBooking = () => {
             </label>
             <input
               type="number"
+              {...register("num_rooms", { required: true, min: 1 })}
               id="rooms"
-              name="rooms"
               min="1"
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
             />

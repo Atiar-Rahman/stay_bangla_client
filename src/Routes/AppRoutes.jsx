@@ -14,6 +14,9 @@ import RoomBooking from "../Pages/RoomBooking";
 import SignIn from "../Pages/SignIn";
 import SignUp from "../Pages/SignUp";
 import Profile from "../Pages/Profile";
+import ShowBooking from "../Pages/ShowBooking";
+import ShowUser from "../Pages/ShowUser";
+import ShowReview from "../Pages/ShowReview";
 
 const AppRoutes = () => {
   return (
@@ -37,6 +40,9 @@ const AppRoutes = () => {
           element={<RoomBooking />}
         />
         <Route path="profile" element={<Profile/>}/>
+        <Route path="showbooking" element={<ShowBooking/>}/>
+        <Route path="users" element={<ShowUser/>}/>
+        <Route path="reviews" element={<ShowReview/>}/>
       </Route>
     </Routes>
   );
