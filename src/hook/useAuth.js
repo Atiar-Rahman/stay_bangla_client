@@ -55,13 +55,15 @@ const useAuth = () => {
 
   // password change
   const changePassword = async (data) => {
+    setErrorMes("");
     try {
       await apiClient.post("/auth/users/set_password/", data, {
-        headers: { Authorization: `JWT ${authTokens?.access}` },
+        headers: {
+          Authorization: `JWT ${authTokens?.access}`,
+        },
       });
-    } catch (err) {
-      console.log(err);
-      return handleApiError(err, "some this went worng");
+    } catch (error) {
+      return handleApiError(error);
     }
   };
 
