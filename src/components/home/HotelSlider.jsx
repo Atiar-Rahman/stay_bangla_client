@@ -54,10 +54,9 @@ const HotelSlider = () => {
       onAutoplayTimeLeft={onAutoplayTimeLeft}
       className="mySwiper relative"
       breakpoints={{
-        640: { slidesPerView: 1, spaceBetween: 20 },
-        768: { slidesPerView: 2, spaceBetween: 25 },
-        1024: { slidesPerView: 3, spaceBetween: 30 },
-        1280: { slidesPerView: 5, spaceBetween: 40 },
+        768: { slidesPerView: 1, spaceBetween: 45 },
+        1024: { slidesPerView: 2, spaceBetween: 40 },
+        1280: { slidesPerView: 3, spaceBetween: 40 },
       }}
     >
       {hotels.map((hotel) => (

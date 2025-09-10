@@ -11,13 +11,13 @@ const Home = () => {
   return (
     <div>
       <SwiperSlider />
+      <SectionTitle heading={"Time line"}  subHeading={"First See hotel Booking process"}/>
+      <BookingPorcess />
       <SectionTitle
         heading={"Our Best Hotel"}
         subHeading={"Explore our Top label Hotel in Bangladesh"}
       />
-      <SectionTitle heading={'Time line'}/>
-      <BookingPorcess/>
-      <HotelSlider/>
+      <HotelSlider />
       <SectionTitle
         heading={"Our Best Services"}
         subHeading={"Explore hotel services and Enjoy at all"}
@@ -28,7 +28,7 @@ const Home = () => {
         subHeading={"Explore all news knowledge our Hotel"}
       />
       <BlogNews />
-      <FAQSection/>
+      <FAQSection />
     </div>
   );
 };
