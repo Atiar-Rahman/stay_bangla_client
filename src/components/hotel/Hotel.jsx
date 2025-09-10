@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import useAuthContext from "../../hook/useAuthContext";
 const Hotel = ({ hotel }) => {
   const {user} = useAuthContext()
-  console.log(hotel);
+  // console.log(hotel);
   return (
     <div className="bg-base-100 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
       <div className="flex justify-between items-center">

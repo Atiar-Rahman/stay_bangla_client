@@ -3,6 +3,8 @@ import SectionTitle from "../components/SectionTitle";
 import Services from "../components/home/Services";
 import BlogNews from "../components/home/BlogNews";
 import FAQSection from "../components/home/FAQSection";
+import Hotels from "./Hotels";
+import HotelSlider from "../components/home/HotelSlider";
 
 const Home = () => {
   return (
@@ -12,6 +14,7 @@ const Home = () => {
         heading={"Our Best Hotel"}
         subHeading={"Explore our Top label Hotel in Bangladesh"}
       />
+      <HotelSlider/>
       <SectionTitle
         heading={"Our Best Services"}
         subHeading={"Explore hotel services and Enjoy at all"}

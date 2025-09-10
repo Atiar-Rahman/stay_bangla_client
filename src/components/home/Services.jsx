@@ -1,38 +1,37 @@
 import React from "react";
-import icon1 from "../../assets/sm1.png";
-import icon2 from "../../assets/sm1.png";
-import icon3 from "../../assets/sm1.png";
-import icon4 from "../../assets/sm1.png";
-import icon5 from "../../assets/sm1.png";
-
+import s2 from '../../assets/service/s1.jpeg'
+import s3 from "../../assets/service/s2.jpeg";
+import s1 from "../../assets/service/s3.jpeg";
+import s4 from "../../assets/service/s4.jpeg";
+import s5 from "../../assets/service/s5.jpeg";
 const Services = () => {
   const services = [
     {
-      image: icon1,
+      image: s1,
       title: "Free Wi-Fi",
       description:
         "Stay connected with fast and reliable internet throughout the hotel.",
     },
     {
-      image: icon2,
+      image: s2,
       title: "24/7 Room Service",
       description:
         "Enjoy meals and snacks at any time with our round-the-clock room service.",
     },
     {
-      image: icon3,
+      image: s3,
       title: "Swimming Pool",
       description:
         "Relax and unwind in our clean and well-maintained swimming pool.",
     },
     {
-      image: icon4,
+      image: s4,
       title: "Gym & Fitness",
       description:
         "Stay fit during your stay with our fully equipped gym facilities.",
     },
     {
-      image: icon5,
+      image: s5,
       title: "Conference Rooms",
       description:
         "Professional spaces for business meetings, conferences, and events.",
@@ -45,15 +44,17 @@ const Services = () => {
         {services.map((service, index) => (
           <div
             key={index}
-            className="flex flex-col items-center text-center bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
+            className="flex flex-col items-center text-center bg-white  rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
           >
             <img
               src={service.image}
               alt={service.title}
-              className="w-16 h-16 mb-4"
+              className="w-full h-full mb-4"
             />
-            <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-            <p className="text-gray-600 text-sm">{service.description}</p>
+            <div className="card-body">
+              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+              <p className="text-gray-600 text-sm">{service.description}</p>
+            </div>
           </div>
         ))}
       </div>
