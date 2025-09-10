@@ -12,7 +12,8 @@ const Sidebar = ({ open, handleOpen }) => {
     { to: "/dashboard/hotel/add", icon: MdNoteAdd, label: "Add Hotel" },
     { to: "/dashboard/addimages", icon: MdNoteAdd, label: "Add Hotel Image" },
     { to: "/dashboard/showhotel", icon: MdDashboard, label: "Show Hotel" },
-    { to: "/dashboard/users", icon: FaUser, label: "User" },
+    { to: "/dashboard/users", icon: FaUser, label: "Users" },
+    { to: "/dashboard/contacts", icon: FaUser, label: "Contacts" },
     {
       to: "/dashboard/showbooking",
       icon: TbBrandBooking,

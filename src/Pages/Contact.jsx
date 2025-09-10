@@ -3,7 +3,30 @@ import { FaAddressBook } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import SectionTitle from "../components/SectionTitle";
+import { useForm } from "react-hook-form";
+import apiClient from "../services/api-client";
+import Swal from "sweetalert2";
 const Contact = () => {
+  const {register,handleSubmit,formState:{errors}} = useForm()
+
+  const handleContact = async(data)=>{
+    console.log(data)
+    try{
+      const res = await apiClient.post('/contacts/',data)
+      console.log(res)
+      if(res.status ===201){
+        Swal.fire({
+          title: "Contact connection me!",
+          icon: "success",
+          draggable: true,
+        });
+      }
+
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   return (
     <section className="max-w-7xl mx-auto px-6 py-12">
       <SectionTitle
@@ -40,32 +63,50 @@ const Contact = () => {
 
         {/* Right Side: Contact Form */}
         <div className="bg-white p-6 rounded-lg shadow-lg">
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit(handleContact)} className="space-y-4">
             <div>
               <label className="block text-gray-700 mb-1">Your Name</label>
               <input
                 type="text"
+                {...register("name", { required: "Name is required" })}
                 placeholder="Enter your name"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
+              {errors.name && (
+                <span className="text-red-500 text-sm">
+                  {errors.name.message}
+                </span>
+              )}
             </div>
 
             <div>
               <label className="block text-gray-700 mb-1">Email Address</label>
               <input
                 type="email"
+                {...register("email", { required: "valid email required" })}
                 placeholder="Enter your email"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
+              {errors.email && (
+                <span className="text-red-500 text-sm">
+                  {errors.email.message}
+                </span>
+              )}
             </div>
 
             <div>
               <label className="block text-gray-700 mb-1">Message</label>
               <textarea
                 rows="4"
+                {...register("comment", { required: "message required" })}
                 placeholder="Write your message..."
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               ></textarea>
+              {errors.comment && (
+                <span className="text-red-500 text-sm">
+                  {errors.comment.message}
+                </span>
+              )}
             </div>
 
             <button

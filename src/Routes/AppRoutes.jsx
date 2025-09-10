@@ -17,6 +17,7 @@ import ShowBooking from "../Pages/ShowBooking";
 import ShowUser from "../Pages/ShowUser";
 import PrivateRoute from "./PrivateRoute";
 import HotelForm from "../Pages/HotelForm";
+import ShowContacts from "../Pages/ShowContacts";
 
 const AppRoutes = () => {
   return (
@@ -39,10 +40,7 @@ const AppRoutes = () => {
         <Route index element={<Dashboard />} />
         <Route path="hotel/add" element={<HotelForm mode="add" />} />
         <Route path="addroom/:hotelId" element={<AddRoom />} />
-        <Route
-          path="hotel/update/:id"
-          element={<HotelForm mode="update" />}
-        />
+        <Route path="hotel/update/:id" element={<HotelForm mode="update" />} />
         <Route path="addimages" element={<AddRoomImage />} />
         <Route path="showhotel" element={<Hotels />} />
         <Route path="hotel/:hotelId" element={<HotelDetails />} />
@@ -53,6 +51,7 @@ const AppRoutes = () => {
         <Route path="profile" element={<Profile />} />
         <Route path="showbooking" element={<ShowBooking />} />
         <Route path="users" element={<ShowUser />} />
+        <Route path="contacts" element={<ShowContacts/>} />
       </Route>
     </Routes>
   );
