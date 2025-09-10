@@ -46,13 +46,19 @@ const HotelSlider = () => {
 
   return (
     <Swiper
-      slidesPerView={3}
+      slidesPerView={1} //default mobile viewset 1
       spaceBetween={30}
       autoplay={{ delay: 2500, disableOnInteraction: false }}
       pagination={{ clickable: true }}
       modules={[Autoplay, Pagination, Navigation]}
       onAutoplayTimeLeft={onAutoplayTimeLeft}
       className="mySwiper relative"
+      breakpoints={{
+        640: { slidesPerView: 1, spaceBetween: 20 },
+        768: { slidesPerView: 2, spaceBetween: 25 },
+        1024: { slidesPerView: 3, spaceBetween: 30 },
+        1280: { slidesPerView: 5, spaceBetween: 40 },
+      }}
     >
       {hotels.map((hotel) => (
         <SwiperSlide key={hotel.id}>

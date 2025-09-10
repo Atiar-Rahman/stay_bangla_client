@@ -1,12 +1,47 @@
-
 import { FaArrowRight, FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa6";
 import { VscDiffAdded } from "react-icons/vsc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuthContext from "../../hook/useAuthContext";
+import authApiClient from "../../services/auth-api-client";
+import Swal from "sweetalert2";
+import { useState } from "react";
+import Loading from "../Loading";
 const Hotel = ({ hotel }) => {
-  const {user} = useAuthContext()
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
+  const [loading,setLoading] = useState(false)
   // console.log(hotel);
+  // hotel delete operaion
+  const handleHotelDelete = async (hotelId) => {
+    const result = await Swal.fire({
+      title: "Are you sure you want to delete this hotel?",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+      icon: "warning",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        setLoading(true);
+        const res = await authApiClient.delete(`/hotels/${hotelId}`);
+        if (res.status === 204) {
+          Swal.fire("Deleted!", "Hotel has been deleted.", "success");
+          navigate("/dashboard/showhotel");
+        }
+      } catch (err) {
+        Swal.fire("Error!", "Failed to delete hotel.", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    navigate('/dashboard')
+  };
+
+  if (loading){
+    return <Loading/>
+  }
   return (
     <div className="bg-base-100 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
       <div className="flex justify-between items-center">
@@ -40,13 +75,16 @@ const Hotel = ({ hotel }) => {
         </Link>
         {(user?.is_staff || user?.is_supervisor) && (
           <div className="flex gap-3">
-            <Link>
+            <Link to={`/dashboard/hotel/update/${hotel.id}`}>
               <button className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
                 Update <FaEdit />
               </button>
             </Link>
             <Link>
-              <button className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
+              <button
+                onClick={() => handleHotelDelete(hotel.id)}
+                className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors"
+              >
                 Delete <FaTrash />
               </button>
             </Link>

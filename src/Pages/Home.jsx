@@ -5,6 +5,7 @@ import BlogNews from "../components/home/BlogNews";
 import FAQSection from "../components/home/FAQSection";
 import Hotels from "./Hotels";
 import HotelSlider from "../components/home/HotelSlider";
+import BookingPorcess from "../components/home/BookingPorcess";
 
 const Home = () => {
   return (
@@ -14,6 +15,8 @@ const Home = () => {
         heading={"Our Best Hotel"}
         subHeading={"Explore our Top label Hotel in Bangladesh"}
       />
+      <SectionTitle heading={'Time line'}/>
+      <BookingPorcess/>
       <HotelSlider/>
       <SectionTitle
         heading={"Our Best Services"}
