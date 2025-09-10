@@ -5,6 +5,7 @@ import Loading from "../components/Loading";
 import Room from "../components/hotel/Room";
 import SectionTitle from "../components/SectionTitle";
 import HotelInfo from "../components/hotel/HotelInfo";
+import Review from "../components/hotel/Review";
 
 const HotelDetails = () => {
   const { hotelId } = useParams(); // ✅ extract id from route params
@@ -65,6 +66,9 @@ const HotelDetails = () => {
           ))}
         </div>
       </section>
+      <div>
+        <Review hotelId={hotelId}/>
+      </div>
     </div>
   );
 };
