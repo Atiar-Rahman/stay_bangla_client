@@ -1,7 +1,7 @@
 import Lottie from "lottie-react";
 import loginAnimation from "../data/Login.json";
 import { SiWelcometothejungle } from "react-icons/si";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuthContext from "../hook/useAuthContext";
 import Swal from "sweetalert2";
@@ -11,6 +11,7 @@ const SignIn = () => {
 
     const {register,handleSubmit,formState:{errors}} = useForm()
     const { loginUser } = useAuthContext();
+    const nevigate = useNavigate()
 
     const handleLogin = (data) =>{
         // console.log(data)
@@ -23,6 +24,7 @@ const SignIn = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        nevigate('/')
     }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 via-white to-blue-100 px-4">

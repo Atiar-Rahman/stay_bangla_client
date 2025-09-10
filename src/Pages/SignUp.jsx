@@ -1,6 +1,6 @@
 import Lottie from "lottie-react";
 import signupAnimation from "../data/signup.json";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuthContext from "../hook/useAuthContext";
 import Swal from "sweetalert2";
@@ -12,6 +12,7 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const { registeruser } = useAuthContext();
+  const nevigate = useNavigate()
 
   const handleSignUp = (data) => {
     // Call backend registration function
@@ -24,6 +25,7 @@ const SignUp = () => {
       showConfirmButton: false,
       timer: 1500,
     });
+    nevigate('/login')
   };
 
   return (
