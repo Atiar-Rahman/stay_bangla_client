@@ -9,8 +9,7 @@ const BlogNews = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {blogs.map((post) => (
           <motion.div
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.002 }}
             key={post.id}
             className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
           >

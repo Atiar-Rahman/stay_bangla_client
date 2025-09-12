@@ -1,26 +1,51 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import authApiClient from "../../services/auth-api-client";
+import Swal from "sweetalert2";
 
 const ReviewForm = ({hotelId}) => {
   const { register, handleSubmit,formState:{errors}} = useForm();
 
   const handleReview = async (data) => {
+    // Ensure rating is an integer
     const payload = {
       ...data,
-      rating: parseInt(data.rating, 10), // convert to number
+      rating: parseInt(data.rating, 10),
     };
 
     try {
+      // Post review to hotel endpoint
       const res = await authApiClient.post(
         `/hotels/${hotelId}/reviews/`,
         payload
       );
+
       console.log("Review submitted:", res.data);
+
+      // Show success alert
+      Swal.fire({
+        title: "Review added successfully!",
+        icon: "success",
+        draggable: true,
+        timer: 1500, // optional: auto close
+        showConfirmButton: false,
+      });
+
+      // Optionally reset form here if using react-hook-form
+      // reset();
     } catch (err) {
       console.error("Review error:", err.response?.data || err.message);
+
+      // Show error to user
+      Swal.fire({
+        title: "Failed to add review",
+        text: err.response?.data?.detail || err.message,
+        icon: "error",
+        draggable: true,
+      });
     }
   };
+
 
   return (
     <form onSubmit={handleSubmit(handleReview)} className="my-10">

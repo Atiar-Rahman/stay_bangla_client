@@ -9,7 +9,7 @@ const Review = ({hotelId}) => {
     useEffect(()=>{
         const fetchReview =async()=>{
             try{
-              const res = await authApiClient.get(`hotels/${hotelId}/reviews/`);
+              const res = await authApiClient.get(`/hotels/${hotelId}/reviews/`);
               console.log(res.data)
               setReviews(res.data)
             }catch(err){
