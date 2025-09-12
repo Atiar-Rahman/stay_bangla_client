@@ -93,19 +93,19 @@ const Room = ({ room }) => {
       {/* Book button */}
       <div className="flex space-x-2">
         <Link to={`/dashboard/hotel/${hotelId}/rooms/${room.id}/bookings/`}>
-          <button className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
+          <button className="mt-6 cursor-pointer flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
             booking <FaArrowRight />
           </button>
         </Link>
         <Link to={`/dashboard/hotel/${hotelId}/update/rooms/${room.id}`}>
-          <button className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
+          <button className="mt-6 cursor-pointer flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
             Update <FaEdit />
           </button>
         </Link>
         <Link>
           <button
             onClick={() => handleHotelRoomDelete(room.id)}
-            className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors"
+            className="mt-6 cursor-pointer flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors"
           >
             Delete <FaTrash />
           </button>

@@ -57,7 +57,7 @@ const Hotel = ({ hotel }) => {
         {(user?.is_staff || user?.is_supervisor) && (
           <div className="flex justify-center items-center mb-6">
             <Link to={`/dashboard/addroom/${hotel.id}`}>
-              <button className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
+              <button className="mt-6 cursor-pointer flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
                 Room Add <VscDiffAdded />
               </button>
             </Link>
@@ -74,21 +74,21 @@ const Hotel = ({ hotel }) => {
 
       <div className="flex space-x-2">
         <Link to={`/dashboard/hotel/${hotel.id}`}>
-          <button className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
+          <button className="mt-6 cursor-pointer flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
             Details <FaArrowRight />
           </button>
         </Link>
         {(user?.is_staff || user?.is_supervisor) && (
           <div className="flex gap-3">
             <Link to={`/dashboard/hotel/update/${hotel.id}`}>
-              <button className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
+              <button className="mt-6 cursor-pointer flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
                 Update <FaEdit />
               </button>
             </Link>
             <Link>
               <button
                 onClick={() => handleHotelDelete(hotel.id)}
-                className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors"
+                className="mt-6 cursor-pointer flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors"
               >
                 Delete <FaTrash />
               </button>

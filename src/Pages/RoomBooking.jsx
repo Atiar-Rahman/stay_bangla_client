@@ -173,10 +173,10 @@ const RoomBooking = () => {
           </div>
 
           {/* Submit Button */}
-          <div className="pt-4 cursor-pointer">
+          <div className="pt-4">
             <button
               type="submit"
-              className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors"
+              className="w-full cursor-pointer bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors"
             >
               Confirm Booking
             </button>

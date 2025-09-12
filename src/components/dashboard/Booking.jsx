@@ -1,6 +1,7 @@
 import React from "react";
 import useAuthContext from "../../hook/useAuthContext";
 import authApiClient from "../../services/auth-api-client";
+import Swal from "sweetalert2";
 
 const Booking = ({ b, endpoint, handleCancel }) => {
   const { user } = useAuthContext();
@@ -67,23 +68,35 @@ const getRoomId = async (hotelId, roomName) => {
  
 
 
-  const handlePayment = async (booking) => {
-    try {
-      const payload = {
-        booking_id: booking.id,
-        amount: booking.amount, // important
-        num_rooms: booking.num_rooms, // important
-      };
-      const res = await authApiClient.post("payment/initiate/", payload);
-      console.log(res.data.payment_url);
-      window.location.href = res.data.payment_url; // redirect user
-    } catch (err) {
-      console.log(
-        "Payment initiation error:",
-        err.response?.data || err.message
-      );
-    }
-  };
+const handlePayment = async (bookingId) => {
+  try {
+    const payload = {
+      booking_id: bookingId,
+      amount: b.amount,
+      num_rooms: b.num_rooms,
+    };
+
+    const res = await authApiClient.post("/payment/initiate/", payload);
+    console.log("Payment URL:", res.data.payment_url);
+
+    // Redirect to SSLCommerz (or payment gateway)
+    window.location.href = res.data.payment_url;
+  } catch (err) {
+    console.error(
+      "Payment initiation error:",
+      err.response?.data || err.message
+    );
+
+    Swal.fire({
+      icon: "error",
+      title: "Payment Failed",
+      text:
+        err.response?.data?.detail ||
+        "Something went wrong while initiating payment.",
+    });
+  }
+};
+
 
   return (
     <div className="border p-4 mb-4 rounded shadow-sm bg-white">
