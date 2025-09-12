@@ -14,7 +14,7 @@ const Room = ({ room }) => {
     const {hotelId} = useParams()
   return (
     <motion.div 
-    whileHover={{scale:1.2}}
+    whileHover={{scale:1.002}}
     className=" bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
       {/* Room type */}
       <div className="flex justify-between items-center mb-4">

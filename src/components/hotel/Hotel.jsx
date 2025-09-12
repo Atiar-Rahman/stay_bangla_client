@@ -45,7 +45,7 @@ const Hotel = ({ hotel }) => {
   }
   return (
     <motion.div
-      whileHover={{ scale: 1.2 }}
+      whileHover={{ scale: 1.002 }}
       whileTap={{ scale: 0.9 }}
       className="bg-base-100 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300"
     >

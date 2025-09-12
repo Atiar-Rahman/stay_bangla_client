@@ -5,23 +5,70 @@ import authApiClient from "../../services/auth-api-client";
 const Booking = ({ b, endpoint, handleCancel }) => {
   const { user } = useAuthContext();
 
-  const handleDelete = async (bookingId) => {
-    if (!window.confirm("Are you sure you want to delete this booking?"))
-      return;
-    try {
-      await authApiClient.delete(`/bookings/${bookingId}/`);
-      alert("Booking deleted successfully!");
-      window.location.reload(); // or you can refetch data from parent
-    } catch (err) {
-      console.error(err);
-      alert("Failed to delete booking.");
-    }
-  };
+  
+const getHotelId = async (hotelName) => {
+  const res = await authApiClient.get("/hotels/");
+  console.log("Hotels from API:", res.data); // check actual fields
+  const hotel = res.data.find(
+    (h) => h.name?.toLowerCase().trim() === hotelName.toLowerCase().trim()
+  );
+  if (!hotel) throw new Error("Hotel not found");
+  return hotel.id;
+};
 
-  const handleUpdate = async (bookingId) => {
-    // You can navigate to a booking update form page
-    alert(`Update booking ${bookingId} (implement the update logic here)`);
-  };
+
+const getRoomId = async (hotelId, roomName) => {
+  const res = await authApiClient.get(`/hotels/${hotelId}/rooms/`);
+  const room = res.data.find(r => r.room_type === roomName);
+  if (!room) throw new Error("Room not found");
+  return room.id;
+};
+
+
+
+
+ const handleDelete = async (bookingId, b) => {
+   if (
+     !window.confirm(
+       "Do you want to delete this booking before deleting the hotel?"
+     )
+   )
+     return;
+
+   try {
+     // 1️ Get hotel ID
+     let hotelId;
+     try {
+       hotelId = await getHotelId(b.hotel_name);
+     } catch (err) {
+       alert("Hotel not found for this booking.",err);
+       return;
+     }
+     console.log(hotelId)
+
+     // 2️ Get room ID
+     let roomId;
+     try {
+       roomId = await getRoomId(hotelId, b.room_name);
+     } catch (err) {
+       alert("Room not found for this booking.",err);
+       return;
+     }
+     console.log(roomId)
+    //  console.log(bookingId,roomId,hotelId)
+    //  3️ Delete booking
+     await authApiClient.delete(
+       `/hotels/${hotelId}/rooms/${roomId}/bookings/${bookingId}/`
+     );
+     console.log(`Booking ${bookingId} deleted successfully`);
+     alert("Booking deleted successfully!");
+   } catch (err) {
+     console.error(err.response?.data || err);
+     alert(err.response?.data?.detail || "Failed to delete booking.");
+   }
+ };
+ 
+
 
   const handlePayment = async (booking) => {
     try {
@@ -40,7 +87,6 @@ const Booking = ({ b, endpoint, handleCancel }) => {
       );
     }
   };
-
 
   return (
     <div className="border p-4 mb-4 rounded shadow-sm bg-white">
@@ -107,7 +153,8 @@ const Booking = ({ b, endpoint, handleCancel }) => {
           </button>
         )}
       {b.status === "pending" && (
-        <button onClick={()=>handlePayment(b)}
+        <button
+          onClick={() => handlePayment(b.id)}
           className="mt-2 bg-green-300 text-white py-1 px-3 rounded hover:bg-green-700 transition-colors mr-2"
         >
           Payment Now
@@ -118,13 +165,13 @@ const Booking = ({ b, endpoint, handleCancel }) => {
       {(user.is_staff || user.is_supervisor) && (
         <>
           <button
-            onClick={() => handleUpdate(b.id)}
+            // onClick={() => handleUpdate(b.id)}
             className="mt-2 bg-blue-300 text-white py-1 px-3 rounded hover:bg-blue-700 transition-colors mr-2"
           >
             Update
           </button>
           <button
-            onClick={() => handleDelete(b.id)}
+            onClick={() => handleDelete(b.id,b)}
             className="mt-2 bg-gray-300 text-white py-1 px-3 rounded hover:bg-gray-700 transition-colors"
           >
             Delete
