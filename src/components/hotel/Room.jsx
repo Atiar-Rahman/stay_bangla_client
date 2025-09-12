@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FaCheckCircle,
   FaTimesCircle,
@@ -8,14 +8,51 @@ import {
   FaEdit,
 } from "react-icons/fa";
 import { FaArrowRight, FaTrash } from "react-icons/fa6";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {motion} from 'motion/react'
+import Swal from "sweetalert2";
+import authApiClient from "../../services/auth-api-client";
+import Loading from "../Loading";
 const Room = ({ room }) => {
-    const {hotelId} = useParams()
+  const { hotelId } = useParams();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  // hotel delete operaion
+  const handleHotelRoomDelete = async (roomId) => {
+    const result = await Swal.fire({
+      title: "Are you sure you want to delete this hotel?",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+      icon: "warning",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        setLoading(true);
+        const res = await authApiClient.delete(`/hotels/${hotelId}/rooms/${roomId}`);
+        if (res.status === 204) {
+          Swal.fire("Deleted!", "Hotel has been deleted.", "success");
+          navigate("/dashboard/showhotel");
+        }
+      } catch (err) {
+        Swal.fire("Error!", "Failed to delete hotel.", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    navigate("/dashboard/showhotel");
+  };
+
+  
+  if(loading){
+    return <Loading/>
+  }
   return (
-    <motion.div 
-    whileHover={{scale:1.002}}
-    className=" bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+    <motion.div
+      whileHover={{ scale: 1.002 }}
+      className=" bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300"
+    >
       {/* Room type */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-xl font-bold capitalize text-gray-800">
@@ -60,13 +97,16 @@ const Room = ({ room }) => {
             booking <FaArrowRight />
           </button>
         </Link>
-        <Link>
+        <Link to={`/dashboard/hotel/${hotelId}/update/rooms/${room.id}`}>
           <button className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
             Update <FaEdit />
           </button>
         </Link>
         <Link>
-          <button className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
+          <button
+            onClick={() => handleHotelRoomDelete(room.id)}
+            className="mt-6 flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors"
+          >
             Delete <FaTrash />
           </button>
         </Link>

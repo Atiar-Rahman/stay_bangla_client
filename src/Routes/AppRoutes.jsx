@@ -5,7 +5,6 @@ import Contact from "../Pages/Contact";
 import BlogDetails from "../components/home/BlogDetails";
 import Dashboard from "../Pages/Dashboard";
 import DashboardLayout from "../layout/DashboardLayout";
-import AddRoom from "../Pages/AddRoom";
 import AddRoomImage from "../Pages/AddHotelImage";
 import Hotels from "../Pages/Hotels";
 import HotelDetails from "../Pages/HotelDetails";
@@ -19,6 +18,7 @@ import PrivateRoute from "./PrivateRoute";
 import HotelForm from "../Pages/HotelForm";
 import ShowContacts from "../Pages/ShowContacts";
 import ShowReview from "../Pages/ShowReview";
+import RoomForm from "../Pages/RoomForm";
 
 const AppRoutes = () => {
   return (
@@ -40,8 +40,12 @@ const AppRoutes = () => {
       >
         <Route index element={<Dashboard />} />
         <Route path="hotel/add" element={<HotelForm mode="add" />} />
-        <Route path="addroom/:hotelId" element={<AddRoom />} />
+        <Route path="addroom/:hotelId" element={<RoomForm mode="add" />} />
         <Route path="hotel/update/:id" element={<HotelForm mode="update" />} />
+        <Route
+          path="hotel/:hotelId/update/rooms/:roomId"
+          element={<RoomForm mode="update" />}
+        />
         <Route path="addimages" element={<AddRoomImage />} />
         <Route path="showhotel" element={<Hotels />} />
         <Route path="hotel/:hotelId" element={<HotelDetails />} />
@@ -53,7 +57,7 @@ const AppRoutes = () => {
         <Route path="showbooking" element={<ShowBooking />} />
         <Route path="users" element={<ShowUser />} />
         <Route path="contacts" element={<ShowContacts />} />
-        <Route path="reviews" element={<ShowReview/>} />
+        <Route path="reviews" element={<ShowReview />} />
       </Route>
     </Routes>
   );

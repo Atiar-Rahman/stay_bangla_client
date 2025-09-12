@@ -24,9 +24,6 @@ const getRoomId = async (hotelId, roomName) => {
   return room.id;
 };
 
-
-
-
  const handleDelete = async (bookingId, b) => {
    if (
      !window.confirm(
