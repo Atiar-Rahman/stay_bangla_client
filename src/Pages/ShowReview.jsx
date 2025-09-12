@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import authApiClient from "../services/auth-api-client";
 import { Delete } from "lucide-react";
 import Swal from "sweetalert2";
+import useAuthContext from "../hook/useAuthContext";
 
 const ShowReview = () => {
   const [reviews, setReviews] = useState([]);
   const [hotelId, setHotelId] = useState(0);
+  const {user} = useAuthContext()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,6 +68,9 @@ const ShowReview = () => {
 
   return (
     <div>
+      {
+        user.status === 'is_staff' ?(
+          <div>
       <h1 className="text-2xl font-semibold text-center my-10">
         Provide Hotel Id and Show hotel Review
       </h1>
@@ -138,6 +143,11 @@ const ShowReview = () => {
           ))
         )}
       </div>
+    </div>
+        ):(
+          <div><h1 className="text-red-500 text-center">Review Not found</h1></div>
+        )
+      }
     </div>
   );
 };
