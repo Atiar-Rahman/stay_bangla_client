@@ -49,9 +49,10 @@ const RoomForm = ({ mode = "add" }) => {
             timer: 1500,
             showConfirmButton: false,
           });
-          navigate(`/dashboard/hotel/${hotelId}/rooms`);
+          navigate(`/dashboard/hotel/${hotelId}`);
         }
       } else {
+         // eslint-disable-next-line no-unused-vars
          const { room_type, ...payload } = data; // remove room_type
          
         // PATCH update room
@@ -66,7 +67,7 @@ const RoomForm = ({ mode = "add" }) => {
             timer: 1500,
             showConfirmButton: false,
           });
-          navigate(`/dashboard/hotel/${hotelId}/rooms`);
+          navigate(`/dashboard/hotel/${hotelId}`);
         }
       }
     } catch (err) {
