@@ -1,125 +1,126 @@
 import React, { useEffect, useState } from "react";
 import authApiClient from "../services/auth-api-client";
-import { Delete } from "lucide-react";
 import Swal from "sweetalert2";
 import useAuthContext from "../hook/useAuthContext";
+import Loading from "../components/Loading";
 
 const ShowReview = () => {
   const [reviews, setReviews] = useState([]);
-  const [hotelId, setHotelId] = useState(0);
-  const {user} = useAuthContext()
+  const [hotelId, setHotelId] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { user } = useAuthContext();
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    const id = e.target.id.value;
+    const id = parseInt(e.target.id.value, 10);
+    if (!id) {
+      Swal.fire("Error", "Please provide a valid Hotel ID", "error");
+      return;
+    }
     setHotelId(id);
   };
 
+  // Fetch reviews whenever hotelId changes
   useEffect(() => {
+    if (!hotelId) return;
+
     const fetchReviews = async () => {
-      if (!hotelId) return; // prevent empty call
+      setLoading(true);
       try {
         const res = await authApiClient.get(`/hotels/${hotelId}/reviews/`);
-        setReviews(res.data); // assuming your API returns data in .data
-        console.log(res.data);
+        setReviews(res.data); // Adjust if your API returns { results: [...] }
       } catch (error) {
         console.error("Failed to fetch reviews:", error);
+        Swal.fire("Error", "Failed to fetch reviews", "error");
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchReviews();
   }, [hotelId]);
 
+  // Handle review deletion
   const handleDelete = async (id) => {
+    if (!hotelId) return;
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
       });
 
       if (result.isConfirmed) {
         await authApiClient.delete(`/hotels/${hotelId}/reviews/${id}`);
-
-        // Update the UI only after successful delete
-        setReviews((prevReviews) =>
-          prevReviews.filter((review) => review.id !== id)
-        );
-
-        Swal.fire({
-          title: "Deleted!",
-          text: "The review has been deleted.",
-          icon: "success",
-        });
+        setReviews((prev) => prev.filter((review) => review.id !== id));
+        Swal.fire("Deleted!", "The review has been deleted.", "success");
       }
     } catch (err) {
       console.error("Error deleting review:", err);
-      Swal.fire({
-        title: "Error",
-        text: "Failed to delete the review.",
-        icon: "error",
-      });
+      Swal.fire("Error", "Failed to delete the review.", "error");
     }
   };
 
+  // Check if user is staff
+  if (!user?.is_staff) {
+    return <h1 className="text-red-500 text-center mt-10">Access Denied</h1>;
+  }
+
   return (
-    <div>
-      {
-        user.status === 'is_staff' ?(
-          <div>
-      <h1 className="text-2xl font-semibold text-center my-10">
-        Provide Hotel Id and Show hotel Review
+    <div className="px-4 py-8">
+      <h1 className="text-2xl font-semibold text-center mb-6">
+        Provide Hotel ID to Show Reviews
       </h1>
-      <form
-        onSubmit={handleSubmit}
-        className="w-1/2 md:w-1/4 mx-auto"
-        action=""
-      >
-        <label htmlFor="id" className="font-bold">
+
+      <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto mb-6">
+        <label htmlFor="id" className="font-bold block mb-2">
           Hotel ID:
         </label>
         <input
-          className="w-full border py-2 px-4 text-black rounded-lg"
-          placeholder="Please provide a Hotel Id"
+          id="id"
           type="number"
-          name="id"
+          placeholder="Enter Hotel ID"
+          className="w-full border py-2 px-4 rounded-lg mb-4"
         />
-        <input
-          className="btn btn-outline my-10 w-full"
+        <button
           type="submit"
-          value="Get Review"
-        />
+          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          Get Reviews
+        </button>
       </form>
 
-      {/* show all review */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {reviews.length === 0 ? (
+      {loading ? (
+        <Loading />
+      ) : reviews.length === 0 ? (
+        hotelId && (
           <p className="text-center">No reviews found for this hotel.</p>
-        ) : (
-          reviews.map((review) => (
+        )
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {reviews.map((review) => (
             <div
               key={review.id}
-              className="flex justify-between border p-4 mb-4 rounded shadow bg-white"
+              className="flex justify-between border p-4 rounded shadow bg-white"
             >
               <div>
                 <h2 className="text-xl font-bold mb-2">{review.title}</h2>
-                <p className="text-gray-700 mb-1">
+                <p>
                   <strong>Hotel:</strong> {review.hotel_name}
                 </p>
-                <p className="text-gray-700 mb-1">
+                <p>
                   <strong>Reviewer Email:</strong> {review.user_email}
                 </p>
-                <p className="text-gray-700 mb-1">
+                <p>
                   <strong>Rating:</strong> {review.rating} / 5
                 </p>
-                <p className="text-gray-700 mb-1">
+                <p>
                   <strong>Approved:</strong> {review.is_approved ? "Yes" : "No"}
                 </p>
-                <p className="text-gray-700 mb-1">
+                <p>
                   <strong>Comment:</strong> {review.comment}
                 </p>
                 <p className="text-sm text-gray-500">
@@ -131,23 +132,18 @@ const ShowReview = () => {
                   {new Date(review.updated_at).toLocaleString()}
                 </p>
               </div>
-              <div className="flex justify-end items-end">
+              <div className="flex items-end">
                 <button
                   onClick={() => handleDelete(review.id)}
-                  className="btn btn-outline"
+                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition-colors"
                 >
                   Delete
                 </button>
               </div>
             </div>
-          ))
-        )}
-      </div>
-    </div>
-        ):(
-          <div><h1 className="text-red-500 text-center">Review Not found</h1></div>
-        )
-      }
+          ))}
+        </div>
+      )}
     </div>
   );
 };
