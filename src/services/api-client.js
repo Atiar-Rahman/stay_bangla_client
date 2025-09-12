@@ -1,10 +1,10 @@
 
-//Service folder file only js format
+// Service folder file only js format
 
 import axios from "axios";
 
 const apiClient  = axios.create({
-    baseURL:'https://stay-bangla-atiars-projects.vercel.app/api/v1'
+    baseURL:'https://hotel-management-blue-seven.vercel.app/api/v1'
 })
 
 export default apiClient;
