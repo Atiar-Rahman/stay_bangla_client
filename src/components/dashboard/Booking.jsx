@@ -152,7 +152,7 @@ const getRoomId = async (hotelId, roomName) => {
       {b.status === "pending" && (
         <button
           onClick={() => handlePayment(b.id)}
-          className="mt-2 bg-green-300 text-white py-1 px-3 rounded hover:bg-green-700 transition-colors mr-2"
+          className="mt-2 cursor-pointer bg-green-300 text-white py-1 px-3 rounded hover:bg-green-700 transition-colors mr-2"
         >
           Payment Now
         </button>
@@ -169,7 +169,7 @@ const getRoomId = async (hotelId, roomName) => {
           </button>
           <button
             onClick={() => handleDelete(b.id,b)}
-            className="mt-2 bg-gray-300 text-white py-1 px-3 rounded hover:bg-gray-700 transition-colors"
+            className="mt-2 cursor-pointer bg-gray-300 text-white py-1 px-3 rounded hover:bg-gray-700 transition-colors"
           >
             Delete
           </button>
