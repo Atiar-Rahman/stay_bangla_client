@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const HeroCarusol = ({ slide }) => {
   // Prevent errors if slide is undefined
   if (!slide) return null;
@@ -10,9 +12,11 @@ const HeroCarusol = ({ slide }) => {
           {slide.title}
         </h1>
         <p className="text-lg md:text-xl text-gray-600">{slide.subtitle}</p>
-        <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition">
-          Learn More
-        </button>
+        <Link to="/dashboard/showhotel">
+          <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition">
+            Learn More
+          </button>
+        </Link>
       </div>
 
       {/* Right image */}

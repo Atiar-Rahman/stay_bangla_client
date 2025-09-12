@@ -17,7 +17,12 @@ const Sidebar = ({ open, handleOpen }) => {
     {
       to: "/dashboard/showbooking",
       icon: TbBrandBooking,
-      label: "Show Booking",
+      label: "Booking checkout",
+    },
+    {
+      to: "/dashboard/reviews",
+      icon: MdRateReview,
+      label: "Show All Review",
     },
   ];
 

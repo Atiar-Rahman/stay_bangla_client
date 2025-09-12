@@ -23,7 +23,7 @@ const ReviewForm = ({hotelId}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleReview)} className="space-y-4">
+    <form onSubmit={handleSubmit(handleReview)} className="my-10">
       {/* Rating */}
       <label className="block font-semibold">Rating</label>
       <div id="Rating" className="rating gap-1">

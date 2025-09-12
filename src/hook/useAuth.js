@@ -4,6 +4,9 @@ import apiClient from "../services/api-client";
 const useAuth = () => {
   const [user, setUser] = useState(null);
   const [errorMes, setErrorMes] = useState("");
+  const [loading, setLoading] = useState(true);
+
+
   const getToken = () => {
     const token = localStorage.getItem("authTokens");
     return token ? JSON.parse(token) : null;
@@ -30,6 +33,7 @@ const useAuth = () => {
 
   // fetch user profile
   const fetchUserProfile = async () => {
+    setLoading(true)
     try {
       const response = await apiClient.get("/auth/users/me", {
         headers: { Authorization: `JWT ${authTokens?.access}` },
@@ -39,6 +43,7 @@ const useAuth = () => {
     } catch (err) {
       console.log("fetching err", err);
     }
+    setLoading(false)
   };
 
   // update user profile
@@ -110,6 +115,7 @@ const useAuth = () => {
   return {
     user,
     errorMes,
+    loading,
     loginUser,
     registeruser,
     logoutUser,

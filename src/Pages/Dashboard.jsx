@@ -30,7 +30,7 @@ const Dashboard = () => {
   return (
     <section>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="stat bg-white shadow-lg rounded-lg p-6">
+        <div className="stat bg-base-100 shadow-lg rounded-lg p-6">
           <div className="stat-title">Total Bookings</div>
           <div className="stat-value">{bookings.length}</div>
           <div className="stat-desc">
@@ -38,7 +38,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="stat bg-white shadow-lg rounded-lg p-6">
+        <div className="stat bg-base-100 shadow-lg rounded-lg p-6">
           <div className="stat-title">Active Users</div>
           <div className="stat-value">{users.length}</div>
           <div className="stat-desc">

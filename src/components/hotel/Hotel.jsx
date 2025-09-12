@@ -7,6 +7,7 @@ import authApiClient from "../../services/auth-api-client";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import Loading from "../Loading";
+import {motion} from 'motion/react'
 const Hotel = ({ hotel }) => {
   const { user } = useAuthContext();
   const navigate = useNavigate();
@@ -43,7 +44,11 @@ const Hotel = ({ hotel }) => {
     return <Loading/>
   }
   return (
-    <div className="bg-base-100 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+    <motion.div
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.9 }}
+      className="bg-base-100 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300"
+    >
       <div className="flex justify-between items-center">
         <div className="mb-4">
           <h1 className="text-xl font-bold text-gray-800">{hotel.name}</h1>
@@ -91,7 +96,7 @@ const Hotel = ({ hotel }) => {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

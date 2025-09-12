@@ -4,6 +4,8 @@ import s3 from "../../assets/service/s2.jpeg";
 import s1 from "../../assets/service/s3.jpeg";
 import s4 from "../../assets/service/s4.jpeg";
 import s5 from "../../assets/service/s5.jpeg";
+import {motion} from 'motion/react'
+
 const Services = () => {
   const services = [
     {
@@ -42,7 +44,8 @@ const Services = () => {
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {services.map((service, index) => (
-          <div
+          <motion.div
+            whileHover={{scale:1.2}}
             key={index}
             className="flex flex-col items-center text-center bg-white  rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
           >
@@ -55,7 +58,7 @@ const Services = () => {
               <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
               <p className="text-gray-600 text-sm">{service.description}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

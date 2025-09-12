@@ -9,11 +9,13 @@ import {
 } from "react-icons/fa";
 import { FaArrowRight, FaTrash } from "react-icons/fa6";
 import { Link, useParams } from "react-router-dom";
-
+import {motion} from 'motion/react'
 const Room = ({ room }) => {
     const {hotelId} = useParams()
   return (
-    <div className=" bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+    <motion.div 
+    whileHover={{scale:1.2}}
+    className=" bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
       {/* Room type */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-xl font-bold capitalize text-gray-800">
@@ -69,7 +71,7 @@ const Room = ({ room }) => {
           </button>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

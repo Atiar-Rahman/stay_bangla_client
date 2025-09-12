@@ -18,6 +18,7 @@ import ShowUser from "../Pages/ShowUser";
 import PrivateRoute from "./PrivateRoute";
 import HotelForm from "../Pages/HotelForm";
 import ShowContacts from "../Pages/ShowContacts";
+import ShowReview from "../Pages/ShowReview";
 
 const AppRoutes = () => {
   return (
@@ -51,7 +52,8 @@ const AppRoutes = () => {
         <Route path="profile" element={<Profile />} />
         <Route path="showbooking" element={<ShowBooking />} />
         <Route path="users" element={<ShowUser />} />
-        <Route path="contacts" element={<ShowContacts/>} />
+        <Route path="contacts" element={<ShowContacts />} />
+        <Route path="reviews" element={<ShowReview/>} />
       </Route>
     </Routes>
   );

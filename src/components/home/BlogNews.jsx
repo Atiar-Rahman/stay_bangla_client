@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { blogs } from "../../data/blogData";
-
+import {motion} from 'motion/react'
 
 const BlogNews = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-12">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {blogs.map((post) => (
-          <div
+          <motion.div
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
             key={post.id}
             className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
           >
@@ -30,7 +32,7 @@ const BlogNews = () => {
                 Read More →
               </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

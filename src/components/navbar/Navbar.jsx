@@ -1,6 +1,7 @@
 import React from "react";
 import RightNavbar from "./RightNavbar";
 import { NavLink } from "react-router-dom";
+import hotellogo from '../../assets/hotel.png'
 const Navbar = () => {
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -66,12 +67,27 @@ const Navbar = () => {
                   }`
                 }
               >
-                Booking Now
+                Show Your Booking
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/dashboard/showhotel"
+                className={({ isActive }) =>
+                  `px-4 py-2 border rounded-md transition-all duration-300 ${
+                    isActive
+                      ? "text-red-600 border-red-600"
+                      : "text-gray-700 border-transparent"
+                  }`
+                }
+              >
+                Booking now
               </NavLink>
             </li>
           </ul>
         </div>
-        <NavLink to="/">
+        <NavLink className={'flex justify-center items-center gap-2'} to="/">
+          <img className="w-10" src={hotellogo} alt="" />
           <h1 className="text-2xl font-bold">StayBangla</h1>
         </NavLink>
       </div>
@@ -103,6 +119,20 @@ const Navbar = () => {
               }
             >
               Contact
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/showbooking"
+              className={({ isActive }) =>
+                `px-4 py-2 border rounded-md transition-all duration-300 ${
+                  isActive
+                    ? "text-red-600 border-red-600"
+                    : "text-gray-700 border-transparent"
+                }`
+              }
+            >
+              Show Your Booking
             </NavLink>
           </li>
           <li>
