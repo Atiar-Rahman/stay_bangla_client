@@ -29,10 +29,10 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-50 via-white to-green-100 px-4">
-      <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center gap-10 shadow-xl rounded-3xl overflow-hidden bg-white">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-50 via-base-100 to-green-100 px-4">
+      <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center gap-10 shadow-xl rounded-3xl overflow-hidden bg-base-100">
         {/* Animation Section */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center bg-green-50 p-8">
+        <div className="w-full lg:w-1/2 flex items-center justify-center bg-base-100 p-8">
           <Lottie
             animationData={signupAnimation}
             loop={true}
@@ -42,10 +42,10 @@ const SignUp = () => {
 
         {/* Form Section */}
         <div className="w-full lg:w-1/2 p-8">
-          <h1 className="text-4xl font-extrabold text-gray-800 mb-2">
+          <h1 className="text-4xl font-extrabold text-base-800 mb-2">
             Create an Account ✨
           </h1>
-          <p className="text-gray-500 mb-6">
+          <p className="text-base-500 mb-6">
             Fill in your details to get started
           </p>
 
@@ -53,7 +53,7 @@ const SignUp = () => {
             {/* First & Last Name */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-base-700 mb-1">
                   First Name
                 </label>
                 <input
@@ -65,7 +65,7 @@ const SignUp = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-base-700 mb-1">
                   Last Name
                 </label>
                 <input
@@ -80,7 +80,7 @@ const SignUp = () => {
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-base-700 mb-1">
                 Email Address *
               </label>
               <input
@@ -96,7 +96,7 @@ const SignUp = () => {
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-base-700 mb-1">
                 Password *
               </label>
               <input
@@ -111,7 +111,7 @@ const SignUp = () => {
 
             {/* Address */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-base-700 mb-1">
                 Address
               </label>
               <input
@@ -124,7 +124,7 @@ const SignUp = () => {
 
             {/* Phone Number */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-base-700 mb-1">
                 Phone Number
               </label>
               <input

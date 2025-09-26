@@ -27,10 +27,10 @@ const SignIn = () => {
         nevigate('/')
     }
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 via-white to-blue-100 px-4">
-      <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center gap-10 shadow-xl rounded-3xl overflow-hidden bg-white">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 via-base-100 to-blue-100 px-4">
+      <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center gap-10 shadow-xl rounded-3xl overflow-hidden bg-base-100">
         {/* Animation Section */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center bg-blue-50 p-8">
+        <div className="w-full lg:w-1/2 flex items-center justify-center bg-base-100 p-8">
           <Lottie
             animationData={loginAnimation}
             loop={true}
@@ -40,17 +40,17 @@ const SignIn = () => {
 
         {/* Form Section */}
         <div className="w-full lg:w-1/2 p-8">
-          <h1 className="text-4xl flex gap-5 font-extrabold text-gray-800 mb-2">
+          <h1 className="text-4xl flex gap-5 font-extrabold text-base-800 mb-2">
             Welcome Back (<SiWelcometothejungle />)
           </h1>
-          <p className="text-gray-500 mb-6">
+          <p className="text-base-500 mb-6">
             Please sign in to continue to your account
           </p>
 
           <form onSubmit={handleSubmit(handleLogin)} className="space-y-5">
             {/* Email */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">
+              <label className="block text-sm font-semibold text-base-700 mb-1">
                 Email Address
               </label>
               <input
@@ -69,7 +69,7 @@ const SignIn = () => {
             {/* Password */}
             <div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">
+                <label className="block text-sm font-semibold text-base-700 mb-1">
                   Password
                 </label>
                 <input

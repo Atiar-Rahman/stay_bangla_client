@@ -39,22 +39,22 @@ const Contact = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Left Side: Contact Info */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-semibold text-gray-700">Get in Touch</h2>
-          <p className="text-gray-600">
+          <h2 className="text-2xl font-semibold text-base-700">Get in Touch</h2>
+          <p className="text-base-600">
             Have questions about bookings, hotels, or services? Our team is
             always here to help.
           </p>
 
           <div className="space-y-4">
-            <p className="flex space-x-2 items-center text-gray-700">
+            <p className="flex space-x-2 items-center text-base-700">
               <FaAddressBook className="text-2xl" /> <strong>Address:</strong>{" "}
               Mirpur 1, Dhaka, Bangladesh
             </p>
-            <p className="flex space-x-2 items-center text-gray-700">
+            <p className="flex space-x-2 items-center text-base-700">
               <FaPhone className="text-2xl" />
               <strong>Phone:</strong> +880 1234 567890
             </p>
-            <p className="flex space-x-2 items-center text-gray-700">
+            <p className="flex space-x-2 items-center text-base-700">
               <MdEmail className="text-2xl" /> <strong>Email:</strong>{" "}
               support@staybangla.com
             </p>
@@ -65,7 +65,7 @@ const Contact = () => {
         <div className="bg-base-100 p-6 rounded-lg shadow-lg">
           <form onSubmit={handleSubmit(handleContact)} className="space-y-4">
             <div>
-              <label className="block text-gray-700 mb-1">Your Name</label>
+              <label className="block text-base-700 mb-1">Your Name</label>
               <input
                 type="text"
                 {...register("name", { required: "Name is required" })}
@@ -80,7 +80,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="block text-gray-700 mb-1">Email Address</label>
+              <label className="block text-base-700 mb-1">Email Address</label>
               <input
                 type="email"
                 {...register("email", { required: "valid email required" })}
@@ -95,7 +95,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="block text-gray-700 mb-1">Message</label>
+              <label className="block text-base-700 mb-1">Message</label>
               <textarea
                 rows="4"
                 {...register("comment", { required: "message required" })}
