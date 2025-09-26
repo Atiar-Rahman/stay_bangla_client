@@ -99,7 +99,7 @@ const handlePayment = async (bookingId) => {
 
 
   return (
-    <div className="border p-4 mb-4 rounded shadow-sm bg-white">
+    <div className="border p-4 mb-4 rounded shadow-sm bg-base-100">
       <p>
         <strong>User Email:</strong> {b.user_email}
       </p>

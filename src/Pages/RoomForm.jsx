@@ -84,8 +84,8 @@ const RoomForm = ({ mode = "add" }) => {
   if (loading) return <Loading />;
 
   return (
-    <div className="min-h-screen border-t-8 border-amber-900 w-1/2 mx-auto bg-gray-100 flex items-center justify-center">
-      <div className="w-full max-w-lg bg-white shadow-lg rounded-xl p-8">
+    <div className="min-h-screen border-t-8 border-amber-900 w-1/2 mx-auto bg-base-100 flex items-center justify-center">
+      <div className="w-full max-w-lg bg-base-100 shadow-lg rounded-xl p-8">
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           {mode === "add" ? "Add New Room" : "Update Room"}
         </h1>
@@ -93,7 +93,7 @@ const RoomForm = ({ mode = "add" }) => {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           {/* Room Type */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Room Type
             </label>
             <select
@@ -116,7 +116,7 @@ const RoomForm = ({ mode = "add" }) => {
 
           {/* Price per Night */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Price per Night (৳)
             </label>
             <input
@@ -136,7 +136,7 @@ const RoomForm = ({ mode = "add" }) => {
 
           {/* Capacity */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Capacity
             </label>
             <input
@@ -154,7 +154,7 @@ const RoomForm = ({ mode = "add" }) => {
 
           {/* Total Rooms */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Total Rooms
             </label>
             <input

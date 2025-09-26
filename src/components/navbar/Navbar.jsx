@@ -49,7 +49,7 @@ const Navbar = () => {
                   `px-4 py-2 border rounded-md transition-all duration-300 ${
                     isActive
                       ? "text-red-600 border-red-600"
-                      : "text-gray-700 border-transparent"
+                      : "text-base-700 border-transparent"
                   }`
                 }
               >
@@ -63,7 +63,7 @@ const Navbar = () => {
                   `px-4 py-2 border rounded-md transition-all duration-300 ${
                     isActive
                       ? "text-red-600 border-red-600"
-                      : "text-gray-700 border-transparent"
+                      : "text-base-700 border-transparent"
                   }`
                 }
               >
@@ -77,7 +77,7 @@ const Navbar = () => {
                   `px-4 py-2 border rounded-md transition-all duration-300 ${
                     isActive
                       ? "text-red-600 border-red-600"
-                      : "text-gray-700 border-transparent"
+                      : "text-base-700 border-transparent"
                   }`
                 }
               >
@@ -100,7 +100,7 @@ const Navbar = () => {
                 `px-4 py-2 border rounded-md transition-all duration-300 ${
                   isActive
                     ? "text-red-600 border-red-600"
-                    : "text-gray-700 border-transparent"
+                    : "text-base-700 border-transparent"
                 }`
               }
             >
@@ -114,7 +114,7 @@ const Navbar = () => {
                 `px-4 py-2 border rounded-md transition-all duration-300 ${
                   isActive
                     ? "text-red-600 border-red-600"
-                    : "text-gray-700 border-transparent"
+                    : "text-base-700 border-transparent"
                 }`
               }
             >
@@ -128,7 +128,7 @@ const Navbar = () => {
                 `px-4 py-2 border rounded-md transition-all duration-300 ${
                   isActive
                     ? "text-red-600 border-red-600"
-                    : "text-gray-700 border-transparent"
+                    : "text-base-700 border-transparent"
                 }`
               }
             >
@@ -142,7 +142,7 @@ const Navbar = () => {
                 `px-4 py-2 border rounded-md transition-all duration-300 ${
                   isActive
                     ? "text-red-600 border-red-600"
-                    : "text-gray-700 border-transparent"
+                    : "text-base-700 border-transparent"
                 }`
               }
             >

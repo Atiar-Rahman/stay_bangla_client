@@ -2,16 +2,16 @@ import React from "react";
 
 const AddRoomImage = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12">
-      <div className="w-full max-w-lg bg-white shadow-lg rounded-xl p-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+    <div className="min-h-screen bg-base-100 flex items-center justify-center py-12">
+      <div className="w-full max-w-lg bg-base-100 shadow-lg rounded-xl p-8">
+        <h1 className="text-3xl font-bold text-base-800 mb-6 text-center">
           Upload Room Image
         </h1>
 
         <form className="space-y-5">
           {/* Hotel Name */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Hotel Name
             </label>
             <input
@@ -23,7 +23,7 @@ const AddRoomImage = () => {
 
           {/* Image Upload */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Image
             </label>
             <input
@@ -35,7 +35,7 @@ const AddRoomImage = () => {
 
           {/* Caption */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Caption
             </label>
             <input
@@ -47,7 +47,7 @@ const AddRoomImage = () => {
 
           {/* Description */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Description
             </label>
             <textarea

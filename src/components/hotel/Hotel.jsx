@@ -51,8 +51,8 @@ const Hotel = ({ hotel }) => {
     >
       <div className="flex justify-between items-center">
         <div className="mb-4">
-          <h1 className="text-xl font-bold text-gray-800">{hotel.name}</h1>
-          <p className="text-sm text-gray-500">Hotel ID: {hotel.id}</p>
+          <h1 className="text-xl font-bold text-base-800">{hotel.name}</h1>
+          <p className="text-sm text-base-500">Hotel ID: {hotel.id}</p>
         </div>
         {(user?.is_staff || user?.is_supervisor) && (
           <div className="flex justify-center items-center mb-6">
@@ -62,11 +62,11 @@ const Hotel = ({ hotel }) => {
               </button>
             </Link>
           </div>
-        )}
+        )}  
       </div>
 
       <div className="border-t pt-4">
-        <p className="text-gray-700">
+        <p className="text-base-700">
           <span className="font-semibold">Address: </span>
           {hotel.address}
         </p>

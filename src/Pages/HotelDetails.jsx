@@ -48,13 +48,13 @@ const HotelDetails = () => {
   if (!hotel) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <p className="text-gray-500">Hotel not found.</p>
+        <p className="text-base-500">Hotel not found.</p>
       </div>
     );
   }
 
   return (
-    <div >
+    <div className="bg-base-100">
       <div>
         <HotelInfo hotel={hotel}/>
       </div>

@@ -6,7 +6,7 @@ const Footer = () => {
       <footer>
         <div className="footer sm:footer-horizontal bg-base-300 text-base-content p-10">
           <aside>
-            <img src={logo} className='w-30 h-30' alt="" />
+            <img src={logo} className='w-30 h-30 bg-white' alt="" />
             <p>
               StayBangla Hotel Industries Ltd.
               <br />

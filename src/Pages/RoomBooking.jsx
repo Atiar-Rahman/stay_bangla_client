@@ -73,8 +73,8 @@ const RoomBooking = () => {
   };
 
   return (
-    <div className="flex items-center justify-center bg-gray-100 p-6">
-      <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-xl">
+    <div className="flex items-center justify-center bg-base-100 p-6">
+      <div className="bg-base-100 shadow-md rounded-lg p-8 w-full max-w-xl">
         <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">
           Room Booking Form
         </h1>
@@ -83,7 +83,7 @@ const RoomBooking = () => {
           <div>
             <label
               htmlFor="roomType"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-base-700"
             >
               Room Type
             </label>
@@ -92,7 +92,7 @@ const RoomBooking = () => {
               id="roomType"
               {...register("room_type")}
               readOnly
-              className="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md shadow-sm px-3 py-2"
+              className="mt-1 block w-full bg-base-100 border border-gray-300 rounded-md shadow-sm px-3 py-2"
             />
           </div>
 
@@ -100,7 +100,7 @@ const RoomBooking = () => {
           <div>
             <label
               htmlFor="checkin"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-base-700"
             >
               Check-in Date
             </label>
@@ -121,7 +121,7 @@ const RoomBooking = () => {
           <div>
             <label
               htmlFor="checkout"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-base-700"
             >
               Check-out Date
             </label>
@@ -142,7 +142,7 @@ const RoomBooking = () => {
           <div>
             <label
               htmlFor="guests"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-base-700"
             >
               Number of Guests
             </label>
@@ -159,7 +159,7 @@ const RoomBooking = () => {
           <div>
             <label
               htmlFor="rooms"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-base-700"
             >
               Number of Rooms
             </label>

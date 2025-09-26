@@ -5,7 +5,7 @@ const HeroCarusol = ({ slide }) => {
   if (!slide) return null;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-6 md:px-16 py-12 bg-gradient-to-r from-blue-100 to-white">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-6 md:px-16 py-12 bg-gradient-to-r from-blue-50 to-base">
       {/* Left text content */}
       <div className="space-y-6">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800">

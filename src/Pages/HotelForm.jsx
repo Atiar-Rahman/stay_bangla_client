@@ -74,8 +74,8 @@ const HotelForm = ({ mode = "add" }) => {
   }
 
   return (
-    <div className="min-h-screen border-t-8 border-amber-900 w-1/2 mx-auto bg-gray-100 flex items-center justify-center">
-      <div className="w-full max-w-2xl bg-white shadow-lg rounded-xl p-8">
+    <div className="min-h-screen border-t-8 border-amber-900 w-1/2 mx-auto bg-base-100 flex items-center justify-center">
+      <div className="w-full max-w-2xl bg-base-100 shadow-lg rounded-xl p-8">
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           {mode === "add" ? "Add New Hotel" : "Update Hotel"}
         </h1>
@@ -83,7 +83,7 @@ const HotelForm = ({ mode = "add" }) => {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           {/* Name */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Name:
             </label>
             <input
@@ -99,7 +99,7 @@ const HotelForm = ({ mode = "add" }) => {
 
           {/* Address */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Address:
             </label>
             <input
@@ -115,7 +115,7 @@ const HotelForm = ({ mode = "add" }) => {
 
           {/* City */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               City:
             </label>
             <input
@@ -131,7 +131,7 @@ const HotelForm = ({ mode = "add" }) => {
 
           {/* Description */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Description:
             </label>
             <textarea
@@ -149,7 +149,7 @@ const HotelForm = ({ mode = "add" }) => {
 
           {/* Amenities */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Amenities:
             </label>
             <input
@@ -165,7 +165,7 @@ const HotelForm = ({ mode = "add" }) => {
 
           {/* Contact Email */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Contact Email:
             </label>
             <input
@@ -183,7 +183,7 @@ const HotelForm = ({ mode = "add" }) => {
 
           {/* Contact Phone */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-base-700 font-semibold mb-1">
               Contact Phone:
             </label>
             <input

@@ -11,7 +11,7 @@ const BlogNews = () => {
           <motion.div
             whileHover={{ scale: 1.002 }}
             key={post.id}
-            className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+            className="bg-base-100 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
           >
             <img
               src={post.image}

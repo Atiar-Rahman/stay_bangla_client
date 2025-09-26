@@ -62,7 +62,7 @@ const Contact = () => {
         </div>
 
         {/* Right Side: Contact Form */}
-        <div className="bg-white p-6 rounded-lg shadow-lg">
+        <div className="bg-base-100 p-6 rounded-lg shadow-lg">
           <form onSubmit={handleSubmit(handleContact)} className="space-y-4">
             <div>
               <label className="block text-gray-700 mb-1">Your Name</label>

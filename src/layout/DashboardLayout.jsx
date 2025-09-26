@@ -9,7 +9,7 @@ const DashboardLayout = () => {
   const handleOpen = () => setOpen(!open);
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-base-100">
       {/* Sidebar */}
       <Sidebar open={open} handleOpen={handleOpen} />
 

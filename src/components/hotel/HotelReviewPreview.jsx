@@ -3,7 +3,7 @@ import { Star } from "lucide-react"; // icon library (lucide-react)
 
 const HotelReviewPreview = ({ review }) => {
   return (
-    <div className="bg-white shadow-lg rounded-xl p-6 mb-4 border border-gray-200">
+    <div className="bg-base-100 shadow-lg rounded-xl p-6 mb-4 border border-gray-200">
       {/* Hotel Name + Rating */}
       <div className="flex justify-between items-center mb-2">
         <h2 className="text-lg font-semibold text-gray-800">
@@ -30,7 +30,7 @@ const HotelReviewPreview = ({ review }) => {
       </h3>
 
       {/* Comment */}
-      <p className="text-gray-600 mt-2">{review.comment}</p>
+      <p className="text-base-600 mt-2">{review.comment}</p>
 
       {/* User & Status */}
       <div className="flex justify-between items-center mt-4 text-sm text-gray-500">
@@ -49,7 +49,7 @@ const HotelReviewPreview = ({ review }) => {
       </div>
 
       {/* Dates */}
-      <div className="mt-3 text-xs text-gray-400">
+      <div className="mt-3 text-xs text-base-400">
         <p>Created: {new Date(review.created_at).toLocaleString()}</p>
         <p>Updated: {new Date(review.updated_at).toLocaleString()}</p>
       </div>

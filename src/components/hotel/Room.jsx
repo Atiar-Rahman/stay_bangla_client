@@ -51,11 +51,11 @@ const Room = ({ room }) => {
   return (
     <motion.div
       whileHover={{ scale: 1.002 }}
-      className=" bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300"
+      className=" bg-base-100 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300"
     >
       {/* Room type */}
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-xl font-bold capitalize text-gray-800">
+        <h1 className="text-xl font-bold capitalize text-base-800">
           {room.room_type} Room
         </h1>
         {room.is_available ? (
@@ -70,7 +70,7 @@ const Room = ({ room }) => {
       </div>
 
       {/* Capacity & Beds */}
-      <div className="flex items-center gap-4 mb-3 text-gray-600">
+      <div className="flex items-center gap-4 mb-3 text-base-600">
         <span className="flex items-center gap-2">
           <FaUser /> Capacity: {room.capacity}
         </span>
@@ -80,7 +80,7 @@ const Room = ({ room }) => {
       </div>
 
       {/* Availability & Price */}
-      <div className="mb-4 text-gray-600">
+      <div className="mb-4 text-base-600">
         <p>
           <span className="font-semibold">Available Rooms: </span>
           {room.available_rooms}

@@ -67,11 +67,11 @@ const ShowContacts = () => {
       {contacts.map((contact) => (
         <div
           key={contact.id}
-          className="bg-white p-4 rounded-lg shadow-md border border-gray-200"
+          className="bg-base-100 p-4 rounded-lg shadow-md border border-gray-200"
         >
-          <p className="text-gray-800 font-semibold">Name: {contact.name}</p>
-          <p className="text-gray-600">Email: {contact.email}</p>
-          <p className="text-gray-700 mt-2">{contact.comment}</p>
+          <p className="text-base-800 font-semibold">Name: {contact.name}</p>
+          <p className="text-base-600">Email: {contact.email}</p>
+          <p className="text-base-700 mt-2">{contact.comment}</p>
           <button
             className="btn btn-outline mt-2"
             onClick={() => handleContactDelete(contact.id)}

@@ -47,7 +47,7 @@ const Services = () => {
           <motion.div
             whileHover={{scale:1.2}}
             key={index}
-            className="flex flex-col items-center text-center bg-white  rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
+            className="flex flex-col items-center text-center bg-base-100  rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
           >
             <img
               src={service.image}

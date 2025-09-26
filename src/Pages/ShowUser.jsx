@@ -52,7 +52,7 @@ const ShowUser = () => {
       ) : (
         <table className="table-auto w-full border">
           <thead>
-            <tr className="bg-gray-200">
+            <tr className="bg-base-200">
               <th className="border px-2 py-1">ID</th>
               <th className="border px-2 py-1">Username</th>
               <th className="border px-2 py-1">Email</th>
