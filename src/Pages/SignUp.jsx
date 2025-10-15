@@ -21,7 +21,7 @@ const SignUp = () => {
     Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Your work has been saved",
+      title: "Check your email and activate your account",
       showConfirmButton: false,
       timer: 1500,
     });
