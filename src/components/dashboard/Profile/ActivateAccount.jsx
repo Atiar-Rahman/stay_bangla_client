@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
 import apiClient from "../../../services/api-client";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ActivateAccount = () => {
   const [message, setMessage] = useState("");
