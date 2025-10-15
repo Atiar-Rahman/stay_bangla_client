@@ -13,10 +13,12 @@ import {motion} from 'motion/react'
 import Swal from "sweetalert2";
 import authApiClient from "../../services/auth-api-client";
 import Loading from "../Loading";
+import useAuthContext from "../../hook/useAuthContext";
 const Room = ({ room }) => {
   const { hotelId } = useParams();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const {user} = useAuthContext()
   // hotel delete operaion
   const handleHotelRoomDelete = async (roomId) => {
     const result = await Swal.fire({
@@ -97,19 +99,23 @@ const Room = ({ room }) => {
             booking <FaArrowRight />
           </button>
         </Link>
-        <Link to={`/dashboard/hotel/${hotelId}/update/rooms/${room.id}`}>
-          <button className="mt-6 cursor-pointer flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
-            Update <FaEdit />
-          </button>
-        </Link>
-        <Link>
-          <button
-            onClick={() => handleHotelRoomDelete(room.id)}
-            className="mt-6 cursor-pointer flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors"
-          >
-            Delete <FaTrash />
-          </button>
-        </Link>
+        {user.is_staff && (
+          <div>
+            <Link to={`/dashboard/hotel/${hotelId}/update/rooms/${room.id}`}>
+              <button className="mt-6 cursor-pointer flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors">
+                Update <FaEdit />
+              </button>
+            </Link>
+            <Link>
+              <button
+                onClick={() => handleHotelRoomDelete(room.id)}
+                className="mt-6 cursor-pointer flex items-center gap-5 justify-center w-full bg-blue-200 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors"
+              >
+                Delete <FaTrash />
+              </button>
+            </Link>
+          </div>
+        )}
       </div>
     </motion.div>
   );
