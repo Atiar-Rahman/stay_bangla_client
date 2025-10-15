@@ -2,6 +2,7 @@ import React from "react";
 import RightNavbar from "./RightNavbar";
 import { NavLink } from "react-router-dom";
 import hotellogo from '../../assets/hotel.png'
+import RegisterMenu from "./RegisterMenu";
 const Navbar = () => {
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -83,6 +84,9 @@ const Navbar = () => {
               >
                 Booking now
               </NavLink>
+            </li>
+            <li>
+              <RegisterMenu/>
             </li>
           </ul>
         </div>

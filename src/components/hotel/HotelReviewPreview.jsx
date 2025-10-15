@@ -1,7 +1,9 @@
-import React from "react";
 import { Star } from "lucide-react"; // icon library (lucide-react)
+import useAuthContext from "../../hook/useAuthContext";
 
-const HotelReviewPreview = ({ review }) => {
+const HotelReviewPreview = ({ review, handleDelete, setReviewId }) => {
+  const { user } = useAuthContext();
+
   return (
     <div className="bg-base-100 shadow-lg rounded-xl p-6 mb-4 border border-gray-200">
       {/* Hotel Name + Rating */}
@@ -45,6 +47,16 @@ const HotelReviewPreview = ({ review }) => {
           }`}
         >
           {review.is_approved ? "Approved" : "Pending"}
+        </span>
+        <span>
+          {user.is_staff && (
+            <button
+              className="btn btn-sm btn-outline"
+              onClick={() => handleDelete(setReviewId(review.id))}
+            >
+              Delete
+            </button>
+          )}
         </span>
       </div>
 

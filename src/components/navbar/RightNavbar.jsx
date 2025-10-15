@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuthContext from "../../hook/useAuthContext";
 import ThemeChange from "./ThemeChange";
+import RegisterMenu from "./RegisterMenu";
 const RightNavbar = () => {
   const { user, logoutUser } = useAuthContext();
 
@@ -12,17 +13,12 @@ const RightNavbar = () => {
   return (
     <section className="flex items-center gap-4">
       {/* Theme Dropdown */}
-      <ThemeChange/>
+      <ThemeChange />
 
       {/* Auth Buttons */}
       {!user ? (
-        <div>
-          <Link to="/signup">
-            <button className="btn btn-outline mr-2">Signup</button>
-          </Link>
-          <Link to="/login">
-            <button className="btn btn-outline mr-2">Login</button>
-          </Link>
+        <div className="hidden sm:block">
+          <RegisterMenu />
         </div>
       ) : (
         <div className="dropdown dropdown-end">

@@ -157,7 +157,7 @@ const handlePayment = async (bookingId) => {
         b.cancellation_allowed && (
           <button
             onClick={() => handleCancel(b.id)}
-            className="mt-2 bg-red-300 text-white py-1 px-3 rounded hover:bg-red-700 transition-colors mr-2"
+            className="mt-2 cursor-pointer bg-red-300 text-white py-1 px-3 rounded hover:bg-red-700 transition-colors mr-2"
           >
             Cancel Booking
           </button>
@@ -176,7 +176,7 @@ const handlePayment = async (bookingId) => {
         <>
           <button
             // onClick={() => handleUpdate(b.id)}
-            className="mt-2 bg-blue-300 text-white py-1 px-3 rounded hover:bg-blue-700 transition-colors mr-2"
+            className="mt-2 cursor-pointer bg-blue-300 text-white py-1 px-3 rounded hover:bg-blue-700 transition-colors mr-2"
           >
             Update
           </button>

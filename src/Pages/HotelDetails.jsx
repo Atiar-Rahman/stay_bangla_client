@@ -56,18 +56,18 @@ const HotelDetails = () => {
   return (
     <div className="bg-base-100">
       <div>
-        <HotelInfo hotel={hotel}/>
+        <HotelInfo hotel={hotel} />
       </div>
       <section>
-        <SectionTitle heading={'Show Avaliable Hotel Room Booking Now'}/>
+        <SectionTitle heading={"Show Avaliable Hotel Room Booking Now"} />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {rooms.map((room) => (
-            <Room key={room.id} room={room}/>
+            <Room key={room.id} room={room} />
           ))}
         </div>
       </section>
       <div>
-        <Review hotelId={hotelId}/>
+        <Review hotelId={hotelId} />
       </div>
     </div>
   );
