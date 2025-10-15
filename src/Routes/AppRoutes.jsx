@@ -19,6 +19,7 @@ import HotelForm from "../Pages/HotelForm";
 import ShowContacts from "../Pages/ShowContacts";
 import ShowReview from "../Pages/ShowReview";
 import RoomForm from "../Pages/RoomForm";
+import ActivateAccount from "../components/dashboard/Profile/ActivateAccount";
 
 const AppRoutes = () => {
   return (
@@ -29,6 +30,7 @@ const AppRoutes = () => {
         <Route path="/blog/:id" element={<BlogDetails />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="activate/:uid/:token" element={<ActivateAccount />} />
       </Route>
       <Route
         path="/dashboard"
