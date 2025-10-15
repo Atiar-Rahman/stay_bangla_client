@@ -6,7 +6,8 @@ const ActivateAccount = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const { uid, token } = useParams();
-
+  console.log(uid)
+  console.log(token)
   const navigate = useNavigate();
 
   useEffect(() => {
